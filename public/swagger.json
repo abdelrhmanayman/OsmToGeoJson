@@ -1,0 +1,108 @@
+{
+  "components": {
+    "examples": {},
+    "headers": {},
+    "parameters": {},
+    "requestBodies": {},
+    "responses": {},
+    "schemas": {},
+    "securitySchemes": {}
+  },
+  "info": {
+    "title": "osm-to-geojson",
+    "version": "1.0.0",
+    "description": "This project exposes one api to convert osm to geo json",
+    "license": {
+      "name": "ISC"
+    },
+    "contact": {
+      "name": "abdelrahman ayman"
+    }
+  },
+  "openapi": "3.0.0",
+  "schemes": [
+    "http"
+  ],
+  "host": "localhost:3002",
+  "basePath": "/api",
+  "paths": {
+    "/map/": {
+      "get": {
+        "operationId": "getGeoJSONController",
+        "description": "Api takes bbox data and returns geo json",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#definitions/payloadResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#definitions/errorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "bbox",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Must be comma separated, <left, bottom, right, top>"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/api"
+    }
+  ],
+  "definitions": {
+    "payloadResponse": {
+      "type": "object",
+      "description": "GeoJson object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Feature",
+            "FeatureCollection",
+            "Point",
+            "MultiPoint",
+            "LineString",
+            "MultiLineString",
+            "Polygon",
+            "MultiPolygon",
+            "GeometryCollection"
+          ]
+        }
+      }
+    },
+    "errorResponse": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

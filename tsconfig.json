@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "downlevelIteration": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@managements*": [
+        "src/managements*"
+      ],
+      "@validations*": [
+        "src/validations*"
+      ],
+      "@middlewares*": [
+        "src/middlewares*"
+      ],
+      "@controllers*": [
+        "src/controllers*"
+      ],
+      "@interfaces*": [
+        "src/interfaces*"
+      ],
+      "@services*": [
+        "src/services*"
+      ],
+      "@routes*": [
+        "src/routes*"
+      ],
+      "@models*": [
+        "src/models*"
+      ],
+      "@utils*": [
+        "src/utils*"
+      ],
+      "app": [
+        "src/app"
+      ]
+    },
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
